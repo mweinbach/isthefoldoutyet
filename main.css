@@ -15,7 +15,7 @@ body {
 
 .answer {
     font-family: 'Roboto Mono', monospace;
-    font-size: 10em;
+    font-size: 15em;
     color: rgb(232,138,87);
     font-weight: bold;
     height: 50vh;
@@ -23,18 +23,21 @@ body {
 }
 
 .counter {
-    color: rgb(104,110,129);
+    color: rgb(140, 147, 169);
     font-family: 'Roboto Mono', monospace;
-    font-size: 20px;
+    font-size: 1.25em;
     width: 100vw;
     padding-left: 25px;
     padding-right: 25px;
 }
 
+.status-container {
+    display: inline-block;
+}
+
 .status {
-    width: 100vw;
     font-family: 'Roboto Mono', monospace;
     color: rgb(220,223,232);
-    font-size: 40px;
-    letter-spacing: 5px;
+    font-size: 3.5em;
+    letter-spacing: 0.1em;
 }
