@@ -16,7 +16,7 @@
         <div class="text-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center" style="width: 100vw;height: 100vh;">
             <h1 class="d-flex d-xl-flex justify-content-center align-items-end align-self-end justify-content-sm-center align-items-sm-end align-self-sm-end justify-content-md-center align-items-md-end align-self-md-end justify-content-lg-center align-items-lg-end align-self-lg-end justify-content-xl-center align-items-xl-end align-self-xl-end"
                 style="font-family: 'Roboto Mono', monospace;font-size: 100px;color: rgb(232,138,87);font-weight: bold;height: 50vh;width: 100vw;">No.</h1>
-            <p style="color: rgb(104,110,129);font-family: 'Roboto Mono', monospace;font-size: 20px;width: 100vw;padding-left: 25px;padding-right: 25px;" id=counter>It's been X days, X hours, X minutes and X seconds since we last heard from Samsung</p>
+            <p style="color: rgb(104,110,129);font-family: 'Roboto Mono', monospace;font-size: 20px;width: 100vw;padding-left: 25px;padding-right: 25px;" id=counter>It's been XX days, XX hours, X minutes and X seconds since we last heard from Samsung</p>
             <a href="https://www.xda-developers.com/samsung-galaxy-fold-launch-delays/" class="text-light">
                 <p style="width: 100vw;height: 40vh;font-family: 'Roboto Mono', monospace;color: rgb(220,223,232);font-size: 40px;letter-spacing: 5px;">Status</p>
             </a>
@@ -25,30 +25,29 @@
                 // Date of last communication
                 var lastHeardOf = new Date("May 06, 2019 23:00:00").getTime();
 
-                // Update every x ms (set to 100ms)
+                // Update every x ms (set to 10ms to try and get rid of the delay on initial load)
                 var timeSince = setInterval(function() {
 
                     // Get current time
                     var now = new Date().getTime();
                     
-                    // Calculate time since lastHearOf
-                    var distance = lastHeardOf - now;
+                    // Calculate time difference
+                    var timeSince = lastHeardOf - now;
+
+                    // Converting to days, hours, minutes and seconds
+                    var days = Math.floor(timeSince / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((timeSince % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeSince % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeSince % (1000 * 60)) / 1000);
                     
-                    // Calculating days, hours, minutes and seconds
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    
-                    // Printing result to id "counter"
-                    document.getElementById("counter").innerHTML = "It's been " + Math.abs(days) + " days, " + Math.abs(hours) + " hours, " + Math.abs(minutes) + " minutes and " + Math.abs(seconds) + " seconds since we last head from Samsung.";
+                    // Printing result to id "counter" -- Also converts it to an absolute value since the result is negative 
+                    document.getElementById("counter").innerHTML = "It's been " + Math.abs(days) + " days, " + Math.abs(hours) + " hours, " + Math.abs(minutes) + " minutes and " + Math.abs(seconds) + " seconds since we last heard from Samsung.";
                     
                 }, 10);
             </script>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
