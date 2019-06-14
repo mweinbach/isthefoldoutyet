@@ -1,23 +1,30 @@
-const lastHeardOf = new Date("May 06, 2019 23:00:00").getTime();
+window.onload = start;
 
 function start() {
-    updateTime();
+    const lastHeardOf = Date.UTC(2019, 4, 6, 23, 0, 0, 0);
 
-    setInterval(updateTime, 10);
+    updateTime(lastHeardOf);
+
+    setInterval(updateTime.bind(null, lastHeardOf), 10);
 }
 
-function updateTime() {
+function updateTime(lastHeardOf) {
     // Get current time
     const now = new Date().getTime();
 
-    // Calculate time difference
-    const timeSince = lastHeardOf - now;
-    // Converting to days, hours, minutes and seconds
-    const days = Math.floor(timeSince / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeSince % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeSince % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeSince % (1000 * 60)) / 1000);
+    let diff = Math.abs(now - lastHeardOf) / 1000;
+
+    const days = Math.floor(diff / 86400);
+    diff -= days * 86400;
+
+    const hours = Math.floor(diff / 3600) % 24;
+    diff -= hours * 3600;
+
+    const minutes = Math.floor(diff / 60) % 60;
+    diff -= minutes * 60;
+
+    const seconds = Math.floor(diff) % 60;
 
     // Printing result to id "counter" -- Also converts it to an absolute value since the result is negative
-    document.getElementById("counter").innerHTML = `It's been ${Math.abs(days)} days, ${Math.abs(hours)} hours, ${Math.abs(minutes)} minutes, and ${Math.abs(seconds)} seconds since we last heard from Samsung.`;
+    document.getElementById("counter").innerHTML = `It's been ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds since we last heard from Samsung.`;
 }
