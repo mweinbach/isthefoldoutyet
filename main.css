@@ -1,0 +1,25 @@
+.answer {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10em;
+    color: rgb(232,138,87);
+    font-weight: bold;
+    height: 50vh;
+    width: 100vw;
+}
+
+.counter {
+    color: rgb(104,110,129);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    width: 100vw;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.status {
+    width: 100vw;
+    font-family: 'Roboto Mono', monospace;
+    color: rgb(220,223,232);
+    font-size: 40px;
+    letter-spacing: 5px;
+}
