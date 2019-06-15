@@ -5,7 +5,7 @@ function start() {
 
     updateTime(lastHeardOf);
 
-    setInterval(updateTime.bind(null, lastHeardOf), 10);
+    setInterval(function() { updateTime(lastHeardOf) }, 10);
 }
 
 function updateTime(lastHeardOf) {
@@ -26,5 +26,5 @@ function updateTime(lastHeardOf) {
     const seconds = Math.floor(diff) % 60;
 
     // Printing result to id "counter" -- Also converts it to an absolute value since the result is negative
-    document.getElementById("counter").innerHTML = `It's been ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds since we last heard from Samsung.`;
+    document.getElementById("counter").innerHTML = "It's been " + days + " days, " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds since we last heard from Samsung.";
 }
