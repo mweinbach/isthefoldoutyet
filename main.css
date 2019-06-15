@@ -38,6 +38,6 @@ body {
 .status {
     font-family: 'Roboto Mono', monospace;
     color: rgb(220,223,232);
-    font-size: 3.5em;
-    letter-spacing: 0.1em;
+    font-size: 2em;
+    letter-spacing: 0.05em;
 }
